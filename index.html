@@ -67,7 +67,19 @@
     }
 
     .section {
-      padding: 80px 0;
+      padding: clamp(60px, 8vw, 100px) 0;
+    }
+
+    /* Scroll Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Typography */
@@ -144,7 +156,7 @@
     }
 
     .logo img {
-      height: 64px;
+      height: clamp(50px, 6vw, 64px);
       width: auto;
     }
 
@@ -152,6 +164,28 @@
       display: flex;
       gap: 32px;
       align-items: center;
+    }
+
+    @media (max-width: 992px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: center;
+        transition: var(--transition);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .nav-links a {
+        font-size: 1.2rem;
+      }
     }
 
     .nav-links a {
@@ -905,22 +939,40 @@
       // In a real app, you could redirect to WhatsApp here too
     });
 
+    // Scroll Reveal Animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section, .course-card, .benefit-item, .step-card, .stat-card').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+
     // Mobile Menu Toggle
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     
     mobileBtn.addEventListener('click', () => {
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-      if(navLinks.style.display === 'flex') {
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '90px';
-        navLinks.style.left = '0';
-        navLinks.style.width = '100%';
-        navLinks.style.background = 'white';
-        navLinks.style.padding = '20px';
-        navLinks.style.borderBottom = '1px solid var(--border)';
-      }
+      navLinks.classList.toggle('active');
+      mobileBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Close menu when clicking links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileBtn.innerHTML = '☰';
+      });
     });
   </script>
 
