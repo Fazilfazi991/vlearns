@@ -1,0 +1,146 @@
+CURSOR PROMPT — V Learns Education Single Page Website
+
+You are working on the V Learns Education one-page institutional website.
+
+Goal:
+Refine and convert the current HTML into a polished, fast, premium, mobile-first education landing page for V Learns Education, focused on HACCP / Food Safety courses.
+
+Brand:
+- Company: V Learns Education
+- Theme: Professional education, food safety, HACCP, career growth, international certification
+- Colors: deep navy blue, bright blue, white, fresh green accents
+- Style: clean, premium, institutional, trustworthy, modern
+- Mood: practical training, career guidance, certification, placement support
+
+Main sections required:
+1. Header / navigation
+   - Logo on left
+   - Links: Home, About, Courses, Benefits, Contact
+   - CTA button: Enquire Now / Join Next Batch
+   - Mobile hamburger menu with smooth dropdown
+
+2. Hero section
+   - Use assets/modern_industrial_training_in_action.png as the hero background or hero image
+   - Keep text readable on mobile and iPhone
+   - Headline example:
+     “Internationally Accredited HACCP & Food Safety Training”
+   - Subheadline:
+     “Practical courses designed for fresh graduates, QA/QC professionals, supervisors, managers, and food safety teams.”
+   - Buttons:
+     “Join Next Batch”
+     “Enquire on WhatsApp”
+   - Add trust chips:
+     Internationally Accredited, Expert Trainers, Career Guidance, Practical Learning
+
+3. About section
+   - Use assets/collaborative_training_in_a_modern_lab.png
+   - Explain that V Learns Education provides practical training, certification guidance, and career-focused learning for food safety and HACCP professionals.
+   - Add 3 or 4 stats/cards:
+     Practical Training
+     Career Support
+     Global Standards
+     Industry Focus
+
+4. Courses section
+   - Show 3 course cards:
+     a. HACCP Level 3 — Supervisory Level
+        Duration: 1 Day Intensive Program
+        Audience: supervisors, team leaders, QA/QC staff, fresh graduates, job seekers
+        Button: Apply for Level 3
+        PDF link: assets/HACCP Level 3_VLRN#01.pdf
+     b. HACCP Level 4 — Advanced Management Level
+        Duration: 40 Hours Structured Program
+        Audience: QA/QC professionals, HACCP team leaders, managers, supervisors, graduates
+        Button: Apply for Level 4
+        PDF link: assets/HACCP Level 4_VLRN#03.pdf
+     c. Food Safety / HACCP Advanced Training
+        Use the third PDF/poster: assets/HACCP Level 4_VLRN#03 (1).pdf
+        Position as an advanced career-focused course option
+        Button: Enquire About Course
+   - Use poster preview PNG files from assets where suitable.
+   - Make cards equal height, premium, and responsive.
+   - On mobile: single column, clear buttons, no horizontal overflow.
+
+5. Benefits section
+   - Highlight:
+     Internationally accredited certification
+     Practical learning with real-life examples
+     Career guidance and placement assistance
+     Resume and interview preparation
+     Job opportunities in leading MNCs
+     Industry connections and networking
+   - Use icons or simple CSS icon circles.
+
+6. Learning / process section
+   - Step 1: Choose Course
+   - Step 2: Attend Practical Training
+   - Step 3: Get Certified
+   - Step 4: Career Support
+
+7. Enquiry CTA section
+   - Use assets/professional_consultation_in_modern_office.png
+   - Add strong CTA:
+     “Ready to build your food safety career?”
+   - Buttons:
+     “Enquire Now”
+     “Chat on WhatsApp”
+
+8. Contact section
+   - Contact form fields:
+     Name, Phone, Email, Course Interested In, Message
+   - Make form front-end only unless backend is added.
+   - On submit, show a friendly success message or redirect to WhatsApp with prefilled text.
+   - Contact info:
+     Phone / WhatsApp: +91 79078 84504
+     Email: vlearnseducations@gmail.com
+
+9. Floating WhatsApp button
+   - Fixed bottom-right
+   - Works on mobile
+   - Link: https://wa.me/917907884504?text=Hi%20V%20Learns%20Education%2C%20I%20want%20to%20enquire%20about%20HACCP%20courses
+
+10. Chatbot
+   - Add a simple floating chatbot widget
+   - Suggested quick replies:
+     “HACCP Level 3”
+     “HACCP Level 4”
+     “Course Duration”
+     “Fees / Enquiry”
+   - For enquiry, direct user to WhatsApp.
+
+Mobile/iPhone optimization requirements:
+- Use mobile-first responsive CSS.
+- Avoid fixed pixel widths.
+- Add:
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+- Images must use:
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+- Use src references from /assets folder.
+- Ensure hero section does not become too tall on iPhone.
+- Buttons should stack cleanly on screens below 480px.
+- Minimum tap target height: 44px.
+- Font sizes should use clamp().
+- Test at:
+  390px width iPhone
+  430px width Android
+  768px tablet
+  1440px desktop
+- No broken image links.
+- No horizontal scroll.
+- Smooth scrolling enabled.
+
+Performance:
+- Compress images if needed.
+- Use lazy loading for below-the-fold images.
+- Use system fonts or Google Font “Inter” / “Manrope”.
+- Keep CSS clean and organized.
+- Keep JS light.
+
+Important:
+Do not remove the current core sections.
+Improve spacing, typography, image placement, CTA clarity, and mobile layout.
+Make the website feel premium enough to impress an education/training institute client.
