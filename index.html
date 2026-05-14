@@ -198,6 +198,58 @@
       color: var(--primary);
     }
 
+    /* Dropdown Styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 250px;
+      box-shadow: var(--shadow);
+      border-radius: 12px;
+      padding: 10px 0;
+      z-index: 1001;
+      top: 100%;
+      left: 0;
+      border: 1px solid var(--border);
+    }
+
+    .dropdown-content a {
+      color: var(--text-dark);
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .dropdown-content a:hover {
+      background-color: var(--soft-bg);
+      color: var(--primary);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    @media (max-width: 992px) {
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        border: none;
+        padding-left: 20px;
+        display: block;
+        min-width: auto;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    }
+
     /* Hero Section */
     .hero {
       position: relative;
@@ -618,7 +670,14 @@
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="index.html#about">About</a>
-        <a href="index.html#courses">Courses</a>
+        <div class="dropdown">
+          <a href="index.html#courses">Courses ▾</a>
+          <div class="dropdown-content">
+            <a href="haccp-level-3.html">HACCP Level 3 — Supervisory</a>
+            <a href="haccp-level-4.html">HACCP Level 4 — Management</a>
+            <a href="food-safety-haccp-advanced.html">Advanced Career Training</a>
+          </div>
+        </div>
         <a href="index.html#benefits">Benefits</a>
         <a href="index.html#contact">Contact</a>
         <a href="https://wa.me/917907884504?text=Hi%20V%20Learns%20Education%2C%20I%20want%20to%20enquire%20about%20your%20HACCP%20courses" target="_blank" class="btn btn-primary">Enquire Now</a>
