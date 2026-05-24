@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Upcoming Training Calendar | V Learns Education</title>
+  <meta name="description" content="View upcoming HACCP classes, food safety workshops, demo sessions, and career-focused training programs at V Learns Education.">
+  <link rel="icon" href="assets/image%28165%29.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { margin: 0; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--v-border);
+      backdrop-filter: blur(14px);
+    }
+    .site-nav {
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .site-nav img { height: 62px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-weight: 800;
+      color: var(--v-navy);
+    }
+    .nav-links a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .nav-links a.active { color: var(--v-blue); border-bottom: 3px solid var(--v-blue); padding-bottom: 10px; }
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--v-border);
+      border-radius: 8px;
+      background: white;
+      color: var(--v-navy);
+      font-size: 1.4rem;
+    }
+    .floating-wa {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 40;
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: #25d366;
+      box-shadow: 0 12px 26px rgba(37,211,102,.32);
+    }
+    .chatbot {
+      position: fixed;
+      right: 24px;
+      bottom: 96px;
+      width: min(310px, calc(100vw - 32px));
+      background: white;
+      border: 1px solid var(--v-border);
+      border-radius: 8px;
+      box-shadow: var(--v-shadow);
+      z-index: 38;
+      padding: 16px;
+    }
+    .chatbot h3 { margin: 0 0 6px; color: var(--v-navy); font-size: 1rem; }
+    .chatbot p { margin: 0 0 12px; color: var(--v-muted); font-size: .9rem; }
+    .chatbot .quick-replies { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .chatbot .quick-replies a {
+      border: 1px solid var(--v-border);
+      color: var(--v-blue);
+      border-radius: 8px;
+      padding: 9px;
+      text-align: center;
+      font-size: .78rem;
+      font-weight: 850;
+      text-decoration: none;
+    }
+    @media (max-width: 840px) {
+      .site-nav { height: 76px; }
+      .nav-toggle { display: inline-grid; place-items: center; }
+      .nav-links {
+        position: fixed;
+        inset: 76px 0 auto 0;
+        background: white;
+        display: none;
+        padding: 20px;
+        box-shadow: var(--v-shadow);
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a.active { padding-bottom: 0; border-bottom: 0; }
+      .chatbot { display: none; }
+    }
+  </style>
+</head>
+<body class="calendar-page">
+  <header>
+    <div class="calendar-container site-nav">
+      <a href="index.html" aria-label="V Learns Education home">
+        <img src="assets/image%28165%29.png" alt="V Learns Education Logo">
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open menu">=</button>
+      <nav class="nav-links" id="siteMenu">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#courses">Courses</a>
+        <a class="active" href="calendar.html">Calendar</a>
+        <a href="index.html#benefits">Benefits</a>
+        <a href="index.html#contact">Contact Us</a>
+        <a class="event-button blue" href="https://wa.me/917907884504?text=Hi%20V%20Learns%20Education%2C%20I%20want%20to%20enquire%20about%20upcoming%20training%20batches" target="_blank" rel="noopener">Enquire on WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="calendar-hero">
+      <div class="calendar-container calendar-hero-grid">
+        <div>
+          <h1>Upcoming <span>Training Calendar</span></h1>
+          <p>View upcoming HACCP classes, food safety workshops, demo sessions, and career-focused training programs.</p>
+          <div class="event-filters" aria-label="Event filters">
+            <button class="filter-btn active" type="button" data-event-filter="All Events">All Events</button>
+            <button class="filter-btn" type="button" data-event-filter="HACCP Level 3">HACCP Level 3</button>
+            <button class="filter-btn" type="button" data-event-filter="HACCP Level 4">HACCP Level 4</button>
+            <button class="filter-btn" type="button" data-event-filter="Workshops">Workshops</button>
+            <button class="filter-btn" type="button" data-event-filter="Career Sessions">Career Sessions</button>
+          </div>
+        </div>
+        <div class="calendar-visual" aria-hidden="true">
+          <div class="calendar-visual-card">
+            <strong style="color:var(--v-navy);font-size:1.1rem;">June 2026</strong>
+            <div class="visual-grid">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="calendar-container calendar-shell" aria-label="Upcoming events calendar">
+      <aside class="calendar-card">
+        <div class="calendar-nav">
+          <button type="button" data-month-nav="-1" aria-label="Previous month">&lt;</button>
+          <h2 data-calendar-title>June 2026</h2>
+          <button type="button" data-month-nav="1" aria-label="Next month">&gt;</button>
+        </div>
+        <div class="mini-calendar" data-calendar-grid></div>
+        <div class="legend">
+          <span><i class="legend-dot class"></i>Blue: Classes / Batches</span>
+          <span><i class="legend-dot workshop"></i>Green: Workshops</span>
+          <span><i class="legend-dot career"></i>Orange: Career Sessions</span>
+        </div>
+      </aside>
+
+      <section class="events-panel">
+        <div class="panel-header">
+          <h2>Upcoming Events</h2>
+          <a class="event-button" href="calendar.html">View All Events</a>
+        </div>
+        <div class="event-list" data-event-list></div>
+      </section>
+    </section>
+
+    <p class="calendar-container calendar-note">Dates may change based on batch availability. Please confirm your seat with our course advisor.</p>
+
+    <section class="calendar-container advisor-cta">
+      <div>
+        <h2>Need help choosing the right course?</h2>
+        <p>Talk to our training advisor and get personalized guidance.</p>
+      </div>
+      <a class="event-button primary" href="https://wa.me/917907884504?text=Hi%20V%20Learns%20Education%2C%20I%20need%20help%20choosing%20the%20right%20course" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </section>
+  </main>
+
+  <div class="chatbot">
+    <h3>Hi</h3>
+    <p>How can I help you today?</p>
+    <div class="quick-replies">
+      <a href="index.html#courses">View Courses</a>
+      <a href="calendar.html">Upcoming Batches</a>
+      <a href="haccp-level-3.html">HACCP Level 3</a>
+      <a href="haccp-level-4.html">HACCP Level 4</a>
+      <a href="https://wa.me/917907884504" target="_blank" rel="noopener">Talk to Advisor</a>
+    </div>
+  </div>
+  <a class="floating-wa" href="https://wa.me/917907884504" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.86 11.86 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807a9.88 9.88 0 0 0 5.392 1.592 9.9 9.9 0 0 0 9.889-9.885c.002-5.462-4.415-9.89-9.881-9.892a9.9 9.9 0 0 0-9.89 9.886 9.84 9.84 0 0 0 1.574 5.111l-.973 3.548 3.889-.972zm11.366-7.301c-.316-.16-1.869-.923-2.158-1.03-.29-.106-.5-.16-.71.16-.21.32-.816 1.03-.999 1.245-.183.215-.367.242-.683.081-.316-.16-1.336-.493-2.545-1.574-.94-.84-1.574-1.878-1.758-2.198-.183-.315-.02-.486.139-.645.143-.142.316-.369.474-.553.158-.185.21-.316.316-.527.106-.211.053-.395-.026-.554-.079-.158-.71-1.71-.973-2.342-.256-.615-.516-.532-.71-.542l-.605-.01c-.21 0-.553.079-.843.395-.29.316-1.106 1.08-1.106 2.636s1.132 3.059 1.291 3.27c.158.211 2.228 3.402 5.399 4.768.754.324 1.343.518 1.803.663.757.24 1.445.206 1.99.12.607-.094 1.869-.765 2.132-1.503.264-.738.264-1.371.185-1.503-.079-.133-.29-.212-.606-.372z"/></svg>
+  </a>
+
+  <script src="js/events-data.js"></script>
+  <script src="js/calendar.js"></script>
+  <script>
+    document.querySelector(".nav-toggle").addEventListener("click", function () {
+      document.getElementById("siteMenu").classList.toggle("open");
+    });
+  </script>
+</body>
+</html>

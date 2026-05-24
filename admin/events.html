@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Events / Calendar | V Learns Admin</title>
+  <link rel="icon" href="../assets/image%28165%29.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-app">
+    <aside class="admin-sidebar">
+      <div class="admin-brand"><img src="../assets/image%28165%29.png" alt=""> <span>V Learns Admin</span></div>
+      <nav class="admin-menu" data-admin-menu>
+        <a href="index.html" data-section="dashboard">Dashboard</a>
+        <a href="courses.html" data-section="courses">Courses</a>
+        <a href="events.html" data-section="events">Events / Calendar</a>
+        <a href="registrations.html" data-section="registrations">Registrations</a>
+        <a href="enquiries.html" data-section="enquiries">Enquiries</a>
+        <a href="#" data-section="students">Students</a>
+        <a href="#" data-section="instructors">Instructors</a>
+        <a href="settings.html" data-section="settings">Settings</a>
+        <a href="#" data-section="profile">Profile</a>
+        <a href="../index.html">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <button class="menu-toggle" type="button" data-sidebar-toggle aria-label="Open admin menu">=</button>
+        <input class="admin-search" type="search" placeholder="Search events, courses, students">
+        <div class="admin-profile"><span>Notifications</span><span>Admin Profile</span></div>
+      </header>
+
+      <section class="admin-content">
+        <div class="page-heading">
+          <div>
+            <h1>Events / Calendar</h1>
+            <p>Manage upcoming classes, batches, workshops, demo sessions, and events.</p>
+          </div>
+          <div class="admin-actions">
+            <button class="admin-btn primary" type="button" data-add-event>Add New Event</button>
+            <button class="admin-btn" type="button">Export Events</button>
+          </div>
+        </div>
+
+        <div class="stats-grid" data-admin-stats></div>
+
+        <div class="admin-workspace">
+          <aside class="admin-card">
+            <h2>June 2026</h2>
+            <div class="mini-calendar" data-admin-calendar></div>
+            <div class="legend">
+              <span><i class="legend-dot class"></i>Classes</span>
+              <span><i class="legend-dot workshop"></i>Workshops</span>
+              <span><i class="legend-dot career"></i>Career</span>
+            </div>
+          </aside>
+
+          <section class="table-card">
+            <h2>Events Table</h2>
+            <div class="table-wrap desktop-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Event</th>
+                    <th>Course / Type</th>
+                    <th>Mode</th>
+                    <th>Seats</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody data-events-table></tbody>
+              </table>
+            </div>
+            <div class="mobile-card-list" data-events-mobile></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop">
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-header">
+        <div>
+          <h2 id="drawerTitle" data-drawer-title>Add New Event</h2>
+          <p>Use mock data now; connect this structure to Supabase, Firebase, MySQL, Google Sheets, or admin login later.</p>
+        </div>
+        <button class="admin-action" type="button" data-close-drawer>Close</button>
+      </div>
+
+      <form class="form-grid" onsubmit="return false;">
+        <div class="field full"><label>Event Title</label><input name="title" required></div>
+        <div class="field"><label>Course / Type</label><select name="category" required></select></div>
+        <div class="field"><label>Date</label><input name="date" type="date" required></div>
+        <div class="field"><label>Start Time</label><input name="startTime" type="time"></div>
+        <div class="field"><label>End Time</label><input name="endTime" type="time"></div>
+        <div class="field"><label>Duration</label><input name="duration" placeholder="1 Day"></div>
+        <div class="field"><label>Mode</label><select name="mode"></select></div>
+        <div class="field full"><label>Location / Meeting Link</label><input name="location"></div>
+        <div class="field"><label>Total Seats</label><input name="totalSeats" type="number" min="1"></div>
+        <div class="field"><label>Seats Filled</label><input name="seatsFilled" type="number" min="0"></div>
+        <div class="field"><label>Status</label><select name="status"></select></div>
+        <div class="field"><label>Event Image</label><input name="image"></div>
+        <div class="field full"><label>Short Description</label><textarea name="shortDescription"></textarea></div>
+        <div class="field full"><label>Full Description</label><textarea name="fullDescription"></textarea></div>
+        <div class="field full"><label>Related Course Page URL</label><input name="relatedCourseUrl"></div>
+        <div class="field full"><label>WhatsApp Registration Message</label><input name="whatsappMessage"></div>
+        <div class="field"><label><input name="addToGoogle" type="checkbox" checked> Add to Google Calendar</label></div>
+        <div class="field"><label><input name="published" type="checkbox"> Publish</label></div>
+      </form>
+      <div class="form-error" data-form-error></div>
+      <div class="drawer-footer">
+        <button class="admin-btn" type="button" data-close-drawer>Cancel</button>
+        <button class="admin-btn" type="button" data-save-draft>Save as Draft</button>
+        <button class="admin-btn green" type="button" data-save-event>Save Event</button>
+        <button class="admin-btn primary" type="button" data-publish-event>Publish Event</button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="../js/events-data.js"></script>
+  <script src="../js/admin-events.js"></script>
+  <script>initAdminEvents();</script>
+</body>
+</html>

@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 
   <style>
     :root {
@@ -644,6 +645,7 @@
         grid-template-columns: 1fr;
       }
       .nav-links { display: none; }
+      .nav-links.active { display: flex; }
       .hero-image { order: -1; }
     }
 
@@ -678,6 +680,7 @@
             <a href="food-safety-haccp-advanced.html">Advanced Career Training</a>
           </div>
         </div>
+        <a href="calendar.html">Calendar</a>
         <a href="index.html#benefits">Benefits</a>
         <a href="index.html#contact">Contact</a>
         <a href="https://wa.me/917907884504?text=Hi%20V%20Learns%20Education%2C%20I%20want%20to%20enquire%20about%20your%20HACCP%20courses" target="_blank" class="btn btn-primary">Enquire Now</a>
@@ -817,6 +820,22 @@
       <div style="text-align: center; margin-top: 50px;">
         <p style="color: var(--text-muted); margin-bottom: 15px;">Need help choosing the right course? Talk to our training advisor.</p>
         <a href="https://wa.me/917907884504?text=Hi%20V%20Learns%20Education%2C%20I%20need%20help%20choosing%20the%20right%20course." class="btn btn-primary">Ask on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Batches Preview -->
+  <section id="upcoming-batches" class="section" style="background: #f4f8fc;">
+    <div class="container">
+      <div class="preview-section">
+        <div class="preview-header">
+          <div>
+            <h2>Upcoming Training Batches</h2>
+            <p style="margin:0;color:var(--v-muted);">Nearest HACCP classes, workshops, and career-focused events.</p>
+          </div>
+          <a href="calendar.html" class="event-button blue">View Full Calendar</a>
+        </div>
+        <div class="homepage-events" data-homepage-events></div>
       </div>
     </div>
   </section>
@@ -991,12 +1010,14 @@
       <div class="quick-replies">
         <div class="reply-btn" onclick="chatAction('HACCP Level 3')">HACCP Level 3</div>
         <div class="reply-btn" onclick="chatAction('HACCP Level 4')">HACCP Level 4</div>
-        <div class="reply-btn" onclick="chatAction('Course Duration')">Course Duration</div>
+        <div class="reply-btn" onclick="window.location.href='calendar.html'">Upcoming Batches</div>
         <div class="reply-btn" onclick="chatAction('Fees / Enquiry')">Fees / Enquiry</div>
       </div>
     </div>
   </div>
 
+  <script src="js/events-data.js"></script>
+  <script src="js/calendar.js"></script>
   <script>
     // Chatbot Toggle
     const chatToggle = document.getElementById('chatToggle');

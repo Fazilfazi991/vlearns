@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 
   <style>
     :root {
@@ -437,6 +438,7 @@
             <a href="food-safety-haccp-advanced.html">Advanced Career Training</a>
           </div>
         </div>
+        <a href="calendar.html">Calendar</a>
         <a href="index.html#benefits">Benefits</a>
         <a href="index.html#contact">Contact</a>
         <a href="https://wa.me/917907884504?text=Hi%20V%20Learns%20Education%2C%20I%20want%20to%20enquire%20about%20your%20HACCP%20courses" target="_blank" class="btn btn-primary">Enquire Now</a>
@@ -572,6 +574,21 @@
     </div>
   </section>
 
+  <section class="section" style="background: #f4f8fc;">
+    <div class="container">
+      <div class="batches-section">
+        <div class="batches-header">
+          <div>
+            <h2>Upcoming Batches for This Course</h2>
+            <p style="margin:0;color:var(--v-muted);">Published HACCP Level 3 batches and registration status.</p>
+          </div>
+          <a class="event-button blue" href="calendar.html">View Calendar</a>
+        </div>
+        <div class="course-batch-list" data-course-batches="HACCP Level 3"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- Final Enquiry Form -->
   <section id="enquiry" class="section" style="background: var(--soft-bg);">
     <div class="container" style="max-width: 800px;">
@@ -632,6 +649,8 @@
     </div>
   </div>
 
+  <script src="js/events-data.js"></script>
+  <script src="js/calendar.js"></script>
   <script>
     // Chatbot Toggle
     const chatToggle = document.getElementById('chatToggle');

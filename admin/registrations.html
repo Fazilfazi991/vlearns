@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Registrations | V Learns Admin</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-app">
+    <aside class="admin-sidebar">
+      <div class="admin-brand"><img src="../assets/image%28165%29.png" alt=""> <span>V Learns Admin</span></div>
+      <nav class="admin-menu" data-admin-menu>
+        <a href="index.html" data-section="dashboard">Dashboard</a><a href="courses.html" data-section="courses">Courses</a><a href="events.html" data-section="events">Events / Calendar</a><a href="registrations.html" data-section="registrations">Registrations</a><a href="enquiries.html" data-section="enquiries">Enquiries</a><a href="#">Students</a><a href="#">Instructors</a><a href="settings.html">Settings</a><a href="#">Profile</a><a href="../index.html">Logout</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-topbar"><button class="menu-toggle" type="button" data-sidebar-toggle>=</button><input class="admin-search" placeholder="Search registrations"><div class="admin-profile"><span>Notifications</span><span>Admin Profile</span></div></header>
+      <section class="admin-content">
+        <div class="page-heading"><div><h1>Registrations</h1><p>Track students/users who registered or enquired for events.</p></div></div>
+        <section class="table-card">
+          <div class="table-wrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Event</th><th>Course</th><th>Date</th><th>Source</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+            <tr><td>Aisha Rahman</td><td>+91 90000 11111</td><td>aisha@example.com</td><td>HACCP Level 3</td><td>HACCP Level 3</td><td>15 Jun 2026</td><td>WhatsApp</td><td><span class="status open">New</span></td><td><div class="row-actions"><button class="admin-action">View</button><button class="admin-action">Edit status</button><a class="admin-action" href="https://wa.me/917907884504">WhatsApp</a><button class="admin-action danger">Delete</button></div></td></tr>
+            <tr><td>Rohit Menon</td><td>+91 90000 22222</td><td>rohit@example.com</td><td>Career Guidance</td><td>Career Session</td><td>05 Jul 2026</td><td>Calendar</td><td><span class="status warning">Contacted</span></td><td><div class="row-actions"><button class="admin-action">View</button><button class="admin-action">Edit status</button><a class="admin-action" href="https://wa.me/917907884504">WhatsApp</a><button class="admin-action danger">Delete</button></div></td></tr>
+          </tbody></table></div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="../js/events-data.js"></script><script src="../js/admin-events.js"></script><script>initAdminShell("registrations");</script>
+</body>
+</html>
