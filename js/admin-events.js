@@ -230,6 +230,109 @@ function initEventForm() {
   if (status) status.innerHTML = statusOptions.map((item) => `<option>${item}</option>`).join("");
 }
 
+function registrationRow(registration) {
+  return `
+    <tr>
+      <td>${registration.name}</td>
+      <td>${registration.phone}</td>
+      <td>${registration.email || "-"}</td>
+      <td>${registration.event}</td>
+      <td>${registration.course}</td>
+      <td>${formatEventDate(registration.date)}</td>
+      <td>${registration.source}</td>
+      <td><span class="status ${statusClass(registration.status)}">${registration.status}</span></td>
+      <td>
+        <div class="row-actions">
+          <button class="admin-action" type="button" data-reg-status="${registration.id}">Edit status</button>
+          <a class="admin-action" href="${VLEARNS_WHATSAPP}?text=${encodeURIComponent(`Hi ${registration.name}, this is V Learns Education regarding ${registration.event}.`)}" target="_blank" rel="noopener">WhatsApp</a>
+          <button class="admin-action danger" type="button" data-reg-delete="${registration.id}">Delete</button>
+        </div>
+      </td>
+    </tr>`;
+}
+
+function enquiryRow(enquiry) {
+  return `
+    <tr>
+      <td>${enquiry.name}</td>
+      <td>${enquiry.phone}</td>
+      <td>${enquiry.email || "-"}</td>
+      <td>${enquiry.interestedCourse}</td>
+      <td>${enquiry.message || "-"}</td>
+      <td>${formatEventDate(enquiry.date)}</td>
+      <td><span class="status ${statusClass(enquiry.status)}">${enquiry.status}</span></td>
+      <td>${enquiry.source}</td>
+      <td>
+        <div class="row-actions">
+          <button class="admin-action" type="button" data-enq-status="${enquiry.id}">Edit status</button>
+          <a class="admin-action" href="${VLEARNS_WHATSAPP}?text=${encodeURIComponent(`Hi ${enquiry.name}, this is V Learns Education regarding your ${enquiry.interestedCourse} enquiry.`)}" target="_blank" rel="noopener">WhatsApp</a>
+          <button class="admin-action danger" type="button" data-enq-delete="${enquiry.id}">Delete</button>
+        </div>
+      </td>
+    </tr>`;
+}
+
+function renderRegistrations() {
+  const table = document.querySelector("[data-registrations-table]");
+  if (!table) return;
+  const registrations = getStoredRegistrations();
+  table.innerHTML = registrations.map(registrationRow).join("");
+  document.querySelector("[data-registration-count]").textContent = registrations.length;
+}
+
+function renderEnquiries() {
+  const table = document.querySelector("[data-enquiries-table]");
+  if (!table) return;
+  const enquiries = getStoredEnquiries();
+  table.innerHTML = enquiries.map(enquiryRow).join("");
+  document.querySelector("[data-enquiry-count]").textContent = enquiries.length;
+}
+
+function cycleStatus(current, options) {
+  const index = options.indexOf(current);
+  return options[(index + 1) % options.length];
+}
+
+function initAdminRegistrations() {
+  initAdminShell("registrations");
+  renderRegistrations();
+  document.addEventListener("click", (event) => {
+    const statusButton = event.target.closest("[data-reg-status]");
+    const deleteButton = event.target.closest("[data-reg-delete]");
+    if (statusButton) {
+      const registrations = getStoredRegistrations();
+      const registration = registrations.find((item) => item.id === statusButton.dataset.regStatus);
+      if (registration) registration.status = cycleStatus(registration.status, ["New", "Contacted", "Confirmed", "Paid", "Cancelled"]);
+      saveStoredRegistrations(registrations);
+      renderRegistrations();
+    }
+    if (deleteButton) {
+      saveStoredRegistrations(getStoredRegistrations().filter((item) => item.id !== deleteButton.dataset.regDelete));
+      renderRegistrations();
+    }
+  });
+}
+
+function initAdminEnquiries() {
+  initAdminShell("enquiries");
+  renderEnquiries();
+  document.addEventListener("click", (event) => {
+    const statusButton = event.target.closest("[data-enq-status]");
+    const deleteButton = event.target.closest("[data-enq-delete]");
+    if (statusButton) {
+      const enquiries = getStoredEnquiries();
+      const enquiry = enquiries.find((item) => item.id === statusButton.dataset.enqStatus);
+      if (enquiry) enquiry.status = cycleStatus(enquiry.status, ["New", "Follow-up", "Converted", "Closed"]);
+      saveStoredEnquiries(enquiries);
+      renderEnquiries();
+    }
+    if (deleteButton) {
+      saveStoredEnquiries(getStoredEnquiries().filter((item) => item.id !== deleteButton.dataset.enqDelete));
+      renderEnquiries();
+    }
+  });
+}
+
 function mutateEvent(id, action) {
   const event = adminState.events.find((item) => item.id === id);
   if (!event) return;

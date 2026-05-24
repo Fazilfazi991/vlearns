@@ -181,6 +181,35 @@
 
     <p class="calendar-container calendar-note">Dates may change based on batch availability. Please confirm your seat with our course advisor.</p>
 
+    <section class="calendar-container calendar-card quick-registration" id="quick-register">
+      <h2>Quick Registration Enquiry</h2>
+      <p>Share your details with the course advisor. This demo saves locally now and can connect to Supabase later.</p>
+      <form class="quick-form" data-registration-form>
+        <label>
+          Full Name
+          <input name="name" type="text" placeholder="Enter your name" required>
+        </label>
+        <label>
+          Phone
+          <input name="phone" type="tel" placeholder="Your WhatsApp number" required>
+        </label>
+        <label>
+          Email
+          <input name="email" type="email" placeholder="you@example.com">
+        </label>
+        <label>
+          Course / Event
+          <select name="eventId" data-registration-event required></select>
+        </label>
+        <label class="full">
+          Message
+          <textarea name="message" placeholder="Tell us your preferred batch, mode, or question"></textarea>
+        </label>
+        <div class="full form-message" data-registration-message></div>
+        <button class="event-button primary full" type="submit">Submit & Continue on WhatsApp</button>
+      </form>
+    </section>
+
     <section class="calendar-container advisor-cta">
       <div>
         <h2>Need help choosing the right course?</h2>

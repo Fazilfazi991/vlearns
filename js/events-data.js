@@ -1,5 +1,56 @@
 const VLEARNS_WHATSAPP = "https://wa.me/917907884504";
 const VLEARNS_REGISTER_TEXT = "Hi V Learns Education, I want to register for an upcoming training batch";
+const VLEARNS_SAMPLE_REGISTRATIONS = [
+  {
+    id: "reg_001",
+    name: "Aisha Rahman",
+    phone: "+91 90000 11111",
+    email: "aisha@example.com",
+    event: "HACCP Level 3 - Supervisory Level",
+    course: "HACCP Level 3",
+    date: "2026-06-15",
+    source: "WhatsApp",
+    status: "New",
+    message: "Interested in the next HACCP Level 3 batch."
+  },
+  {
+    id: "reg_002",
+    name: "Rohit Menon",
+    phone: "+91 90000 22222",
+    email: "rohit@example.com",
+    event: "Food Safety Career Guidance Session",
+    course: "Career Session",
+    date: "2026-07-05",
+    source: "Calendar",
+    status: "Contacted",
+    message: "Need guidance before selecting a course."
+  }
+];
+
+const VLEARNS_SAMPLE_ENQUIRIES = [
+  {
+    id: "enq_001",
+    name: "Fathima K",
+    phone: "+91 90000 33333",
+    email: "fathima@example.com",
+    interestedCourse: "HACCP Level 4",
+    message: "Need next batch details.",
+    date: "2026-05-24",
+    status: "New",
+    source: "Contact Form"
+  },
+  {
+    id: "enq_002",
+    name: "Arjun P",
+    phone: "+91 90000 44444",
+    email: "arjun@example.com",
+    interestedCourse: "Food Safety Advanced Training",
+    message: "Career guidance request.",
+    date: "2026-05-24",
+    status: "Follow-up",
+    source: "Chatbot"
+  }
+];
 
 const VLEARNS_SAMPLE_EVENTS = [
   {
@@ -101,6 +152,62 @@ function getStoredEvents() {
 
 function saveStoredEvents(events) {
   localStorage.setItem("vlearns_events", JSON.stringify(events));
+}
+
+function readStoredList(key, fallback) {
+  const stored = localStorage.getItem(key);
+  if (!stored) return fallback.slice();
+  try {
+    const parsed = JSON.parse(stored);
+    return Array.isArray(parsed) ? parsed : fallback.slice();
+  } catch (error) {
+    return fallback.slice();
+  }
+}
+
+function writeStoredList(key, items) {
+  localStorage.setItem(key, JSON.stringify(items));
+}
+
+function getStoredRegistrations() {
+  return readStoredList("vlearns_registrations", VLEARNS_SAMPLE_REGISTRATIONS);
+}
+
+function saveStoredRegistrations(registrations) {
+  writeStoredList("vlearns_registrations", registrations);
+}
+
+function getStoredEnquiries() {
+  return readStoredList("vlearns_enquiries", VLEARNS_SAMPLE_ENQUIRIES);
+}
+
+function saveStoredEnquiries(enquiries) {
+  writeStoredList("vlearns_enquiries", enquiries);
+}
+
+function addStoredRegistration(registration) {
+  const registrations = getStoredRegistrations();
+  registrations.unshift({
+    id: `reg_${Date.now()}`,
+    source: "Calendar Form",
+    status: "New",
+    ...registration
+  });
+  saveStoredRegistrations(registrations);
+  return registrations[0];
+}
+
+function addStoredEnquiry(enquiry) {
+  const enquiries = getStoredEnquiries();
+  enquiries.unshift({
+    id: `enq_${Date.now()}`,
+    date: new Date().toISOString().slice(0, 10),
+    source: "Calendar Form",
+    status: "New",
+    ...enquiry
+  });
+  saveStoredEnquiries(enquiries);
+  return enquiries[0];
 }
 
 function publishedEvents() {

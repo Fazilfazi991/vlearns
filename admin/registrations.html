@@ -17,16 +17,13 @@
     <main class="admin-main">
       <header class="admin-topbar"><button class="menu-toggle" type="button" data-sidebar-toggle>=</button><input class="admin-search" placeholder="Search registrations"><div class="admin-profile"><span>Notifications</span><span>Admin Profile</span></div></header>
       <section class="admin-content">
-        <div class="page-heading"><div><h1>Registrations</h1><p>Track students/users who registered or enquired for events.</p></div></div>
+        <div class="page-heading"><div><h1>Registrations</h1><p>Track students/users who registered or enquired for events.</p></div><article class="stat-card"><span>Total Registrations</span><strong data-registration-count>0</strong></article></div>
         <section class="table-card">
-          <div class="table-wrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Event</th><th>Course</th><th>Date</th><th>Source</th><th>Status</th><th>Actions</th></tr></thead><tbody>
-            <tr><td>Aisha Rahman</td><td>+91 90000 11111</td><td>aisha@example.com</td><td>HACCP Level 3</td><td>HACCP Level 3</td><td>15 Jun 2026</td><td>WhatsApp</td><td><span class="status open">New</span></td><td><div class="row-actions"><button class="admin-action">View</button><button class="admin-action">Edit status</button><a class="admin-action" href="https://wa.me/917907884504">WhatsApp</a><button class="admin-action danger">Delete</button></div></td></tr>
-            <tr><td>Rohit Menon</td><td>+91 90000 22222</td><td>rohit@example.com</td><td>Career Guidance</td><td>Career Session</td><td>05 Jul 2026</td><td>Calendar</td><td><span class="status warning">Contacted</span></td><td><div class="row-actions"><button class="admin-action">View</button><button class="admin-action">Edit status</button><a class="admin-action" href="https://wa.me/917907884504">WhatsApp</a><button class="admin-action danger">Delete</button></div></td></tr>
-          </tbody></table></div>
+          <div class="table-wrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Event</th><th>Course</th><th>Date</th><th>Source</th><th>Status</th><th>Actions</th></tr></thead><tbody data-registrations-table></tbody></table></div>
         </section>
       </section>
     </main>
   </div>
-  <script src="../js/events-data.js"></script><script src="../js/admin-events.js"></script><script>initAdminShell("registrations");</script>
+  <script src="../js/events-data.js"></script><script src="../js/admin-events.js"></script><script>initAdminRegistrations();</script>
 </body>
 </html>

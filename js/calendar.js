@@ -145,11 +145,52 @@
     }).join("") || `<p>No upcoming batches are published for this course yet.</p>`;
   }
 
+  function renderRegistrationOptions() {
+    const select = document.querySelector("[data-registration-event]");
+    if (!select) return;
+    select.innerHTML = publishedEvents().map((event) => (
+      `<option value="${event.id}">${event.title} - ${formatEventDate(event.date)}</option>`
+    )).join("");
+  }
+
+  function initRegistrationForm() {
+    const form = document.querySelector("[data-registration-form]");
+    if (!form) return;
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const selectedEvent = publishedEvents().find((item) => item.id === formData.get("eventId"));
+      if (!selectedEvent) return;
+      const registration = addStoredRegistration({
+        name: formData.get("name"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        event: selectedEvent.title,
+        course: selectedEvent.category,
+        date: selectedEvent.date,
+        message: formData.get("message")
+      });
+      addStoredEnquiry({
+        name: registration.name,
+        phone: registration.phone,
+        email: registration.email,
+        interestedCourse: selectedEvent.category,
+        message: registration.message || `Registration enquiry for ${selectedEvent.title}`
+      });
+      const message = document.querySelector("[data-registration-message]");
+      if (message) message.textContent = "Saved locally. Opening WhatsApp with your selected event.";
+      window.open(whatsappUrl(selectedEvent), "_blank", "noopener");
+      form.reset();
+      renderRegistrationOptions();
+    });
+  }
+
   function renderAll() {
     renderCalendar();
     renderEvents();
     renderPreview();
     renderCourseBatches();
+    renderRegistrationOptions();
   }
 
   document.addEventListener("click", (event) => {
@@ -184,4 +225,5 @@
   });
 
   renderAll();
+  initRegistrationForm();
 })();

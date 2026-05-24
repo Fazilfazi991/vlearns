@@ -17,16 +17,13 @@
     <main class="admin-main">
       <header class="admin-topbar"><button class="menu-toggle" type="button" data-sidebar-toggle>=</button><input class="admin-search" placeholder="Search enquiries"><div class="admin-profile"><span>Notifications</span><span>Admin Profile</span></div></header>
       <section class="admin-content">
-        <div class="page-heading"><div><h1>Enquiries</h1><p>Track website enquiries from contact form, WhatsApp, and chatbot.</p></div></div>
+        <div class="page-heading"><div><h1>Enquiries</h1><p>Track website enquiries from contact form, WhatsApp, and chatbot.</p></div><article class="stat-card"><span>Total Enquiries</span><strong data-enquiry-count>0</strong></article></div>
         <section class="table-card">
-          <div class="table-wrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Interested Course</th><th>Message</th><th>Date</th><th>Status</th><th>Source</th></tr></thead><tbody>
-            <tr><td>Fathima K</td><td>+91 90000 33333</td><td>fathima@example.com</td><td>HACCP Level 4</td><td>Need next batch details</td><td>24 May 2026</td><td><span class="status open">New</span></td><td>Contact Form</td></tr>
-            <tr><td>Arjun P</td><td>+91 90000 44444</td><td>arjun@example.com</td><td>Food Safety Advanced Training</td><td>Career guidance request</td><td>24 May 2026</td><td><span class="status warning">Follow-up</span></td><td>Chatbot</td></tr>
-          </tbody></table></div>
+          <div class="table-wrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Interested Course</th><th>Message</th><th>Date</th><th>Status</th><th>Source</th><th>Actions</th></tr></thead><tbody data-enquiries-table></tbody></table></div>
         </section>
       </section>
     </main>
   </div>
-  <script src="../js/events-data.js"></script><script src="../js/admin-events.js"></script><script>initAdminShell("enquiries");</script>
+  <script src="../js/events-data.js"></script><script src="../js/admin-events.js"></script><script>initAdminEnquiries();</script>
 </body>
 </html>

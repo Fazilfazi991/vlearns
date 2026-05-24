@@ -345,6 +345,58 @@ img { max-width: 100%; height: auto; }
   background: linear-gradient(135deg, var(--v-navy), var(--v-blue));
 }
 
+.quick-registration {
+  margin: 0 auto 22px;
+  padding: clamp(22px, 4vw, 34px);
+}
+
+.quick-registration h2 {
+  color: var(--v-navy);
+  margin: 0 0 8px;
+}
+
+.quick-registration p {
+  color: var(--v-muted);
+  margin: 0 0 18px;
+}
+
+.quick-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.quick-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--v-navy);
+  font-weight: 850;
+  font-size: .9rem;
+}
+
+.quick-form input,
+.quick-form select,
+.quick-form textarea {
+  width: 100%;
+  border: 1px solid var(--v-border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font: inherit;
+  min-height: 44px;
+}
+
+.quick-form textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.quick-form .full { grid-column: 1 / -1; }
+.form-message {
+  min-height: 24px;
+  color: var(--v-green);
+  font-weight: 850;
+}
+
 .advisor-cta h2 { margin: 0 0 6px; font-size: 1.35rem; color: white; }
 .advisor-cta p { margin: 0; color: rgba(255,255,255,.86); }
 
@@ -396,9 +448,12 @@ img { max-width: 100%; height: auto; }
   .event-actions,
   .advisor-cta,
   .preview-header,
-  .batches-header {
+  .batches-header,
+  .quick-form {
     display: grid;
+    grid-template-columns: 1fr;
   }
+  .quick-form .full { grid-column: auto; }
   .event-button { width: 100%; }
   .advisor-cta { padding: 22px; }
   .mini-calendar { gap: 5px; }
