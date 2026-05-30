@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Courses | V Learns Admin</title>
+  <link rel="icon" href="../assets/image%28165%29.png" type="image/png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-app">
+    <aside class="admin-sidebar">
+      <div class="admin-brand"><img src="../assets/image%28165%29.png" alt=""> <span>V Learns Admin</span></div>
+      <nav class="admin-menu" data-admin-menu>
+        <a href="/admin/index.html" data-section="dashboard">Dashboard</a>
+        <a href="/admin/courses.html" data-section="courses">Courses</a>
+        <a href="/admin/events.html" data-section="events">Events / Calendar</a>
+        <a href="/admin/registrations.html" data-section="registrations">Registrations</a>
+        <a href="/admin/enquiries.html" data-section="enquiries">Enquiries</a>
+        <a href="/index.html">Public Website</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <button class="menu-toggle" type="button" data-sidebar-toggle aria-label="Open admin menu">=</button>
+        <input class="admin-search" type="search" placeholder="Search courses">
+        <div class="admin-profile"><span>Notifications</span><span>Admin</span></div>
+      </header>
+
+      <section class="admin-content">
+        <div class="page-heading">
+          <div>
+            <h1>Courses</h1>
+            <p>Manage the core V Learns course catalogue and connect each course to upcoming batches.</p>
+          </div>
+          <a class="admin-btn primary" href="/admin/events.html">Add Course Batch</a>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span>Total Courses</span><strong>3</strong></article>
+          <article class="stat-card"><span>Published Pages</span><strong>3</strong></article>
+          <article class="stat-card"><span>Certification Courses</span><strong>2</strong></article>
+          <article class="stat-card"><span>Career Training</span><strong>1</strong></article>
+        </div>
+
+        <section class="table-card">
+          <h2>Course Catalogue</h2>
+          <div class="table-wrap desktop-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>Type</th>
+                  <th>Duration</th>
+                  <th>Audience</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>HACCP Level 3 - Supervisory Level</strong><br>Practical supervisory HACCP training.</td>
+                  <td>Certification</td>
+                  <td>1 Day</td>
+                  <td>Supervisors, QA/QC staff, fresh graduates</td>
+                  <td><span class="status open">Published</span></td>
+                  <td><div class="row-actions"><a class="admin-action" href="/haccp-level-3.html">View Page</a><a class="admin-action" href="/admin/events.html">Create Batch</a></div></td>
+                </tr>
+                <tr>
+                  <td><strong>HACCP Level 4 - Advanced Management Level</strong><br>Management-level HACCP leadership program.</td>
+                  <td>Certification</td>
+                  <td>40 Hours</td>
+                  <td>QA/QC professionals, managers, HACCP leaders</td>
+                  <td><span class="status open">Published</span></td>
+                  <td><div class="row-actions"><a class="admin-action" href="/haccp-level-4.html">View Page</a><a class="admin-action" href="/admin/events.html">Create Batch</a></div></td>
+                </tr>
+                <tr>
+                  <td><strong>Food Safety / HACCP Advanced Training</strong><br>Career-focused food safety and HACCP training.</td>
+                  <td>Career Training</td>
+                  <td>40 Hours</td>
+                  <td>Graduates, professionals, food safety job seekers</td>
+                  <td><span class="status open">Published</span></td>
+                  <td><div class="row-actions"><a class="admin-action" href="/food-safety-haccp-advanced.html">View Page</a><a class="admin-action" href="/admin/events.html">Create Batch</a></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mobile-card-list">
+            <article class="mobile-row"><strong>HACCP Level 3 - Supervisory Level</strong><span>Certification - 1 Day</span><span class="status open">Published</span><div class="row-actions"><a class="admin-action" href="/haccp-level-3.html">View Page</a><a class="admin-action" href="/admin/events.html">Create Batch</a></div></article>
+            <article class="mobile-row"><strong>HACCP Level 4 - Advanced Management Level</strong><span>Certification - 40 Hours</span><span class="status open">Published</span><div class="row-actions"><a class="admin-action" href="/haccp-level-4.html">View Page</a><a class="admin-action" href="/admin/events.html">Create Batch</a></div></article>
+            <article class="mobile-row"><strong>Food Safety / HACCP Advanced Training</strong><span>Career Training - 40 Hours</span><span class="status open">Published</span><div class="row-actions"><a class="admin-action" href="/food-safety-haccp-advanced.html">View Page</a><a class="admin-action" href="/admin/events.html">Create Batch</a></div></article>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase-config.js"></script>
+  <script src="../js/events-data.js"></script>
+  <script src="../js/supabase-api.js"></script>
+  <script src="../js/admin-events.js"></script>
+  <script>initAdminShell("courses");</script>
+</body>
+</html>
