@@ -170,13 +170,15 @@
         date: selectedEvent.date,
         message: formData.get("message")
       });
-      addStoredEnquiry({
+      const enquiry = addStoredEnquiry({
         name: registration.name,
         phone: registration.phone,
         email: registration.email,
         interestedCourse: selectedEvent.category,
         message: registration.message || `Registration enquiry for ${selectedEvent.title}`
       });
+      window.VLearnsSupabase?.insertRegistration?.(registration);
+      window.VLearnsSupabase?.insertEnquiry?.(enquiry);
       const message = document.querySelector("[data-registration-message]");
       if (message) message.textContent = "Saved locally. Opening WhatsApp with your selected event.";
       window.open(whatsappUrl(selectedEvent), "_blank", "noopener");
@@ -226,4 +228,6 @@
 
   renderAll();
   initRegistrationForm();
+  window.VLearnsSupabase?.syncFromSupabase?.().then(renderAll);
+  window.addEventListener("vlearns:supabase-sync", renderAll);
 })();

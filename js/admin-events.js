@@ -217,6 +217,7 @@ function saveEvent(forceStatus) {
   if (index >= 0) adminState.events[index] = { ...adminState.events[index], ...payload };
   else adminState.events.push(payload);
   saveStoredEvents(adminState.events);
+  window.VLearnsSupabase?.upsertEvent?.(payload);
   closeDrawer();
   renderEventTable();
 }
@@ -304,13 +305,16 @@ function initAdminRegistrations() {
       const registration = registrations.find((item) => item.id === statusButton.dataset.regStatus);
       if (registration) registration.status = cycleStatus(registration.status, ["New", "Contacted", "Confirmed", "Paid", "Cancelled"]);
       saveStoredRegistrations(registrations);
+      if (registration) window.VLearnsSupabase?.updateRegistration?.(registration);
       renderRegistrations();
     }
     if (deleteButton) {
       saveStoredRegistrations(getStoredRegistrations().filter((item) => item.id !== deleteButton.dataset.regDelete));
+      window.VLearnsSupabase?.deleteRegistration?.(deleteButton.dataset.regDelete);
       renderRegistrations();
     }
   });
+  window.VLearnsSupabase?.syncFromSupabase?.().then(renderRegistrations);
 }
 
 function initAdminEnquiries() {
@@ -324,13 +328,16 @@ function initAdminEnquiries() {
       const enquiry = enquiries.find((item) => item.id === statusButton.dataset.enqStatus);
       if (enquiry) enquiry.status = cycleStatus(enquiry.status, ["New", "Follow-up", "Converted", "Closed"]);
       saveStoredEnquiries(enquiries);
+      if (enquiry) window.VLearnsSupabase?.updateEnquiry?.(enquiry);
       renderEnquiries();
     }
     if (deleteButton) {
       saveStoredEnquiries(getStoredEnquiries().filter((item) => item.id !== deleteButton.dataset.enqDelete));
+      window.VLearnsSupabase?.deleteEnquiry?.(deleteButton.dataset.enqDelete);
       renderEnquiries();
     }
   });
+  window.VLearnsSupabase?.syncFromSupabase?.().then(renderEnquiries);
 }
 
 function mutateEvent(id, action) {
@@ -341,6 +348,8 @@ function mutateEvent(id, action) {
   if (action === "full") event.status = "Full";
   if (action === "publish") event.published = event.published === false;
   saveStoredEvents(adminState.events);
+  if (action === "delete") window.VLearnsSupabase?.deleteEvent?.(id);
+  else if (event) window.VLearnsSupabase?.upsertEvent?.(event);
   renderEventTable();
 }
 
@@ -348,6 +357,10 @@ function initAdminEvents() {
   initAdminShell("events");
   initEventForm();
   renderEventTable();
+  window.VLearnsSupabase?.syncFromSupabase?.().then(() => {
+    adminState.events = getStoredEvents();
+    renderEventTable();
+  });
   document.querySelector("[data-add-event]").addEventListener("click", () => openDrawer(null));
   document.querySelector(".drawer-backdrop").addEventListener("click", (event) => {
     if (event.target.classList.contains("drawer-backdrop")) closeDrawer();
