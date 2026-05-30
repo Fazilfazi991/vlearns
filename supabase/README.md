@@ -1,9 +1,13 @@
 # Supabase Setup
 
 1. Create a Supabase project.
-2. Open SQL Editor and run `supabase/schema.sql`.
-3. Open `js/supabase-config.js`.
-4. Paste your project URL and anon/publishable key:
+2. Open SQL Editor.
+3. Run the SQL files one by one:
+   - `supabase/01_tables.sql`
+   - `supabase/02_policies.sql`
+   - `supabase/03_seed_events.sql`
+4. Open `js/supabase-config.js`.
+5. Paste your project URL and anon/publishable key:
 
 ```js
 window.VLEARNS_SUPABASE_CONFIG = {
